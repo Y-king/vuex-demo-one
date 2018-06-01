@@ -2,7 +2,7 @@
     <div class="content">
         <h2>财富排行榜二</h2>
         <ul>
-            <li v-for="item in lists">
+            <li v-for="item in newlists">
                 <span>{{item.name}}</span>
                 <span>${{item.price}}</span>
             </li>
@@ -10,14 +10,19 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
     computed:{
       lists(){
         return this.$store.state.lists
       },
-      newlists(){
-        return this.$store.getters.newlists
-      }
+      //处理之后state内的数据
+      // newlists(){
+      //   return this.$store.getters.newlists
+      // }
+      ...mapGetters([
+          "newlists"
+      ])
     }
 }
 </script>

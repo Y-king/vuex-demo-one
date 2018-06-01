@@ -2,7 +2,7 @@
     <div class="content">
         <h2>财富排行榜一</h2>
         <ul class="clearfix">
-            <li v-for="item in lists">
+            <li v-for="item in newlists">
                 <span>{{item.name}}</span>
                 <span>${{item.price}}</span>
             </li>
@@ -11,6 +11,8 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex'
 export default {
     computed:{
       // 原始state内的数据
@@ -18,15 +20,21 @@ export default {
         return this.$store.state.lists
       },
       // 处理之后state内的数据
-      newlists(){
-        return this.$store.getters.newlists
-      }
+      // newlists(){
+      //   return this.$store.getters.newlists
+      // }
+      ...mapGetters([
+          "newlists"
+      ])
     },
     methods:{
-      addprice:function(n){
-        // this.$store.commit('addprice')
-        this.$store.dispatch('addprice',n)
-      }
+      // addprice:function(n){
+      //   // this.$store.commit('addprice')
+      //   this.$store.dispatch('addprice',n)
+      // }
+      ...mapActions([
+          "addprice"
+      ])
     }
 }
 </script>

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 export const store = new Vuex.Store({
-    //
+
     state:{
         lists:[
             {name:'马云',price:300},
